@@ -1,0 +1,161 @@
+#include<iostream.h>
+#include<string.h>
+#include<fstream.h>
+#include<stdio.h>
+class FLB;
+class person
+{
+ char usn[30],name[30],addr[30],branch[30],colg[30];
+public:
+ void input();
+ void output();
+ void search(char *fname);
+ void modify(char *fname);
+ friend class FLB;
+};
+class FLB
+{
+ char buff[160];
+public:
+ FLB()
+ {
+ for(int i=0;i<160;i++) 
+ buff[i]='\0';
+ }
+ void pack(person &p);
+ void unpack(person &p);
+ void read(fstream &fs);
+ void write(char *fname);
+};
+void person::input()
+{
+ cout<<"enter usn,name,address,branch and college:";
+ cin>>usn>>name>>addr>>branch>>colg;
+}
+void person::output()
+{
+ cout<<"usn: "<<usn<<"\nname: "<<name<<"\naddress: "<<addr<<"\nbranch:
+"<<branch<<"\ncollege: "<<colg;
+}
+void FLB::pack(person &p)
+{
+ strcpy(buff,p.usn);strcat(buff,"|");
+ strcat(buff,p.name);strcat(buff,"|");
+ strcat(buff,p.addr);strcat(buff,"|");
+ strcat(buff,p.branch);strcat(buff,"|");
+ strcat(buff,p.colg);
+}
+void FLB::unpack(person &p) 
+{
+ char *ptr=buff;
+ while(*ptr)
+ {
+ if(*ptr=='|')
+ *ptr='\0';
+ ptr++;
+ }
+ ptr=buff;
+ strcpy(p.usn,ptr);
+ ptr+=strlen(ptr)+1;
+ strcpy(p.name,ptr);
+ ptr+=strlen(ptr)+1;
+ strcpy(p.addr,ptr);
+ ptr+=strlen(ptr)+1;
+ strcpy(p.branch,ptr);
+ ptr+=strlen(ptr)+1;
+ strcpy(p.colg,ptr);
+}
+void FLB::read(fstream &fs)
+{
+ fs.read(buff,sizeof(buff));
+}
+void FLB::write(char*fname)
+{
+ fstream os(fname,ios::app); 
+ os.write(buff,sizeof(buff));
+ os.close();
+}
+void person::search(char * fname)
+{
+ int found=0;
+ person p;
+ FLB b;
+ char key[30];
+ fstream is(fname,ios::in);
+ cout<<"enter the usn to be searched:";
+ cin>>key;
+ while((!is.eof())&&(!found))
+ {
+ b.read(is);
+ if(is.eof())
+ break;
+ b.unpack(p);
+ if(strcmp(p.usn,key)==0)
+ {
+ cout<<"record found!!\n";
+ p.output();
+ found=1;
+ }
+ }
+ if(!found)
+ cout<<"record with given usn does't exist\n";
+ is.close();
+}
+void person::modify(char*fname)
+{
+ int found=0;
+ person p;
+ FLB b;
+ char key[30],tname[]="temp.txt";
+ fstream is(fname,ios::in);
+ fstream tfile(tname,ios::out|ios::app);
+ cout<<"enter the usn of record to be modified:";
+ cin>>key;
+ while((!is.eof()))
+ {
+ b.read(is);
+ if(is.eof())
+ break;
+ b.unpack(p);
+ if(strcmp(p.usn,key)==0 && !found)
+ {
+ cout<<"record found!!\n";
+ p.input();
+ found=1;
+ }
+ b.pack(p); 
+ b.write(tname);
+ }
+ if(!found)
+ cout<<"record with given usn does't exist\n";
+ is.close();
+ tfile.close();
+ remove(fname);
+ rename(tname,fname);
+}
+void main()
+{
+ int ch;
+ person p;
+ FLB b;
+ char fname[]="prg2.txt";
+ do
+ {
+ cout<<"1:insert\t2:search\t3:modify\t4:exit\nenter your choice";
+ cin>>ch;
+ switch(ch)
+ {
+ case 1:p.input();
+ b.pack(p);
+ b.write(fname);
+ break; 
+  case 2:p.search(fname);
+ break;
+ case 3:
+ p.modify(fname);
+ break;
+ case 4://remove(fname);
+ break;
+ }
+ }while(ch!=4);
+} 
