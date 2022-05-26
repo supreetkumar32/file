@@ -159,3 +159,36 @@ void main()
  }
  }while(ch!=4);
 } 
+
+
+
+output
+1:insert 2:search 3:modify 4:exit 
+enter your choice1 
+enter usn,name,address,branch and college:101 Shivakumar Bangalore ISE BIT 
+1:insert 2:search 3:modify 4:exit 
+enter your choice 1 
+enter usn,name,address,branch and college: 202 Vijay Hassan CSE MCE 
+1:insert 2:search 3:modify 4:exit 
+enter your choice 2 
+enter the usn to be searched:202 
+record found!! 
+usn: 202
+name: Vijay 
+address: Hassan 
+branch: CSE 
+college: MCE 
+1:insert 2:search 3:modify 4:exit 
+enter your choice 3 
+enter the usn of record to be modified:101 
+record found!! 
+enter usn,name,address,branch and college:300 Arnold Newyork CSE BIT 
+1:insert 2:search 3:modify 4:exit 
+enter your choice 2 
+enter the usn to be searched:300 
+record found!! 
+usn: 300 
+name: Arnold 
+address: Newyork 
+branch: CSE 
+college: BIT1:insert 2:search 3:modify 4:exit 
