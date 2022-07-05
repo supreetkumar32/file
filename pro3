@@ -1,6 +1,30 @@
-#include<fstream.h>
-#include<stdio.h>
-#include<string.h>
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+
+#include <bits/stdc++.h>
+
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+
+#include <bits/stdc++.h>
+
+
 int n, no_of_rec, length, len[20];
 class student
 {
@@ -78,8 +102,7 @@ public:
  if(strcmp(key, s[i].usn) == 0)
  {
  cout<<"Record found!!\n";
- cout<<"USN: "<<s[i].usn<<", Name: "<<s[i].name<<", Branch:
-"<<s[i].branch<<", Sem: "<<s[i].sem<<endl;
+ cout<<"USN: "<<s[i].usn<<", Name: "<<s[i].name<<", Branch:"<<s[i].branch<<", Sem: "<<s[i].sem<<endl;
  flag = 1;
  }
  }
@@ -131,7 +154,7 @@ public:
  cout<<"No such USN found\n";
  }
 };
-void main()
+int main()
 {
  int ch, i;
  student s[20];
@@ -165,33 +188,9 @@ void main()
  break;
  }
  }while(ch != 5);
+ return 0;
 } 
 
 
 
-//output
-Enter USN, name, branch and sem of student 3 
-300 SauravG ECE 6 
-Enter USN, name, branch and sem of student 4 
-400 Kapil Mech 8 
-Enter your choice: 2 
-USN Name Branch Sem
-100 Sachin ISE 6 
-200 R.Dravid CSE 6 
-300 SauravG ECE 6 
-400 Kapil Mech 8 
-Enter your choice: 3 
-Enter the USN for search: 400 
-Record found!! 
-USN: 400, Name: Kapil, Branch: Mech, Sem: 8 
-Enter your choice: 4 
-Enter the USN of record to be modified: 100 
-Enter new data: 
-Enter USN, name, branch and sem: 
-500 Gavaskar IT 9 
-Enter your choice: 2 
-USN Name Branch Sem 
-200 R.Dravid CSE 6 
-300 SauravG ECE 6 
-400 Kapil Mech 8 
-500 Gavaskar IT 9 
+ 
