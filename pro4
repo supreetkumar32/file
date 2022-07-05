@@ -1,8 +1,13 @@
-#include<iostream.h> 
-#include<stdio.h> 
-#include<fstream.h> 
-#include<stdlib.h> 
-#include<string.h> 
+//runnable
+
+#include <iostream>
+
+using namespace std;
+
+
+#include <bits/stdc++.h>
+
+
 class delimtextbuffer; 
 class person 
 { 
@@ -195,46 +200,4 @@ cout<<"3:exit"<<endl;
  } 
  return 0; 
 } 
-Output:
-1:Insert a Record 
-2:Search for a Record 
-3:exit 
-1 
-Enter usn 
-100 
-Enter name 
-Darshan 
-Enter address 
-Vijayanagar 
-Enter branch 
-ISE 
-Enter college 
-BIT 
-1:Insert a Record 
-2:Search for a Record
-3:exit 
-1 
-Enter usn 
-200 
-Enter name 
-Bhimsen 
-Enter address 
-Pune 
-Enter branch 
-CSE 
-Enter college 
-MIT 
-1:Insert a Record 
-2:Search for a Record 
-3:exit 
-2 
-enter the RRN of the record to be searched(1 - based)2 
-record found!! 
-200 
-Bhimsen 
-Pune 
-CSE 
-MIT 
-USN:Name:Address:Branch:College:1:Insert a Record 
-2:Search for a Record 
-3:exit 
+
